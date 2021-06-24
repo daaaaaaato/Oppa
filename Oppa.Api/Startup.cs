@@ -9,6 +9,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Oppa.Data;
+using Oppa.Data.Abstractions;
+using Oppa.Data.Implementations;
+using Oppa.Services.Abstractions;
+using Oppa.Services.Implementations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +34,17 @@ namespace Oppa.Api
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
+            services.AddScoped<IServiceRepository, ServiceRepository>();
+
+            services.AddScoped<ITransactionsService, TransactionsService>();
+            services.AddScoped<IProductsService, ProductsService>();
+            services.AddScoped<IServicesService, ServicesService>();
+
+
+
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
