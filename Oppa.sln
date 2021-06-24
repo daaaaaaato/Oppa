@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oppa.Api", "Oppa.Api\Oppa.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oppa.Client", "Oppa.Client\Oppa.Client.csproj", "{96B9DB82-E142-42D2-A32F-35D6D636BC7A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oppa.Data", "Oppa.Data\Oppa.Data.csproj", "{D1ADF289-DF66-413D-ACD2-9E6F6E1B5AE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oppa.Services", "Oppa.Services\Oppa.Services.csproj", "{F8A789CB-2F91-4174-BC43-B7B276F8350D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{96B9DB82-E142-42D2-A32F-35D6D636BC7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96B9DB82-E142-42D2-A32F-35D6D636BC7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96B9DB82-E142-42D2-A32F-35D6D636BC7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1ADF289-DF66-413D-ACD2-9E6F6E1B5AE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1ADF289-DF66-413D-ACD2-9E6F6E1B5AE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1ADF289-DF66-413D-ACD2-9E6F6E1B5AE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1ADF289-DF66-413D-ACD2-9E6F6E1B5AE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8A789CB-2F91-4174-BC43-B7B276F8350D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8A789CB-2F91-4174-BC43-B7B276F8350D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8A789CB-2F91-4174-BC43-B7B276F8350D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8A789CB-2F91-4174-BC43-B7B276F8350D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
