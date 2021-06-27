@@ -9,6 +9,10 @@ namespace Oppa.Data.Abstractions
 {
     public interface IServiceRepository
     {
-        Service GetById(int serviceId);
+        List<Service> GetAll();
+        Service GetById(int id);
+        void Delete(Service entity);
+        void Create(Service entity);
+        void Update(Service entity);
     }
 }
