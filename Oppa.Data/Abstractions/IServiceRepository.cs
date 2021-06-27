@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oppa.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace Oppa.Data.Abstractions
 {
     public interface IServiceRepository
     {
+        Service GetById(int serviceId);
     }
 }

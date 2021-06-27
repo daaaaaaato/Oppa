@@ -2,9 +2,9 @@
 {
     public enum ProductTypeEnum
     {
-        MobilePhone,
-        Financial,
-        Charity,
-        UtilityBill
+        MobilePhone = 1,
+        Financial = 2,
+        Charity = 3,
+        UtilityBill = 4
     }
 }

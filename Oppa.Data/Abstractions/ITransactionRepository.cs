@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Oppa.Data.Models;
+using Oppa.Data.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +10,6 @@ namespace Oppa.Data.Abstractions
 {
     public interface ITransactionRepository
     {
+        void Create(Transaction model);
     }
 }
