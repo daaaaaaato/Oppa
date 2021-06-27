@@ -11,5 +11,7 @@ namespace Oppa.Data.Abstractions
     public interface ITransactionRepository
     {
         void Create(Transaction model);
+        List<Transaction> GetAll();
+        Transaction GetById(long id);
     }
 }

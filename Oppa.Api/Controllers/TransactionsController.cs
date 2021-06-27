@@ -23,6 +23,64 @@ namespace Oppa.Api.Controllers
             this.context = context;
         }
 
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            var response = new ResponseModel<List<Transaction>>();
+
+            try
+            {
+                var data = _transactionsService.GetAll();
+
+                if(data==null || !data.Any())
+                {
+                    response.StatusCode = HttpStatusCode.NotFound;
+                    return NotFound(response);
+                }
+                else
+                {
+                    response.StatusCode = HttpStatusCode.OK;
+                    response.Data = data;
+                    return Ok(response);
+                }
+            }
+            catch(Exception e)
+            {
+                response.StatusCode = HttpStatusCode.BadRequest;
+                response.ErrorMessages.Add(e.Message);
+                return BadRequest(response);
+            }
+        }
+
+        [HttpGet("{id:long}")]
+        public IActionResult GetById(long id)
+        {
+            var response = new ResponseModel<Transaction>();
+
+            try
+            {
+                var data = _transactionsService.GetById(id);
+
+                if (data == null)
+                {
+                    response.StatusCode = HttpStatusCode.NotFound;
+                    return NotFound(response);
+                }
+                else
+                {
+                    response.StatusCode = HttpStatusCode.OK;
+                    response.Data = data;
+                    return Ok(response);
+                }
+            }
+            catch (Exception e)
+            {
+                response.StatusCode = HttpStatusCode.BadRequest;
+                response.ErrorMessages.Add(e.Message);
+                return BadRequest(response);
+            }
+        }
+
         [HttpPost]
         public IActionResult Create(CreateTransactionViewModel model)
         {

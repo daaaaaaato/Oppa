@@ -35,5 +35,15 @@ namespace Oppa.Data.Implementations
                 tx.Rollback();
             }
         }
+
+        public List<Transaction> GetAll()
+        {
+            return _context.Transactions.ToList();
+        }
+
+        public Transaction GetById(long id)
+        {
+            return _context.Transactions.Find(id);
+        }
     }
 }

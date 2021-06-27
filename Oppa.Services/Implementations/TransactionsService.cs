@@ -88,5 +88,15 @@ namespace Oppa.Services.Implementations
 
             return response;
         }
+
+        public List<Transaction> GetAll()
+        {
+            return _transactionRepository.GetAll();
+        }
+
+        public Transaction GetById(long id)
+        {
+            return _transactionRepository.GetById(id);
+        }
     }
 }
