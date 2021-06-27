@@ -16,11 +16,9 @@ namespace Oppa.Api.Controllers
     public class TransactionsController : BaseController
     {
         private readonly ITransactionsService _transactionsService;
-        private readonly ApplicationDbContext context;
         public TransactionsController(ITransactionsService transactionsService, ApplicationDbContext context)
         {
             _transactionsService = transactionsService;
-            this.context = context;
         }
 
         [HttpGet]
