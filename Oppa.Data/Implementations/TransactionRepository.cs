@@ -4,8 +4,6 @@ using Oppa.Data.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Oppa.Data.Implementations
 {
@@ -29,9 +27,8 @@ namespace Oppa.Data.Implementations
                 _context.SaveChanges();
                 tx.Commit();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                // log the error
                 tx.Rollback();
             }
         }

@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace Oppa.Api.Controllers
 {
@@ -30,7 +29,6 @@ namespace Oppa.Api.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    // add validation errors to response.ErrorMessages
                     return BadRequest(response);
                 }
 
@@ -58,7 +56,6 @@ namespace Oppa.Api.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    // add validation errors to response.ErrorMessages
                     return BadRequest(response);
                 }
 
@@ -70,7 +67,7 @@ namespace Oppa.Api.Controllers
                     return NotFound(response);
                 }
 
-                _productsService.Update(model,data);
+                _productsService.Update(model, data);
 
                 response.StatusCode = HttpStatusCode.OK;
                 return Ok(response);

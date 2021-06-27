@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace Oppa.Api.Controllers
 {
@@ -30,7 +29,7 @@ namespace Oppa.Api.Controllers
             {
                 var data = _transactionsService.GetAll();
 
-                if(data==null || !data.Any())
+                if (data == null || !data.Any())
                 {
                     response.StatusCode = HttpStatusCode.NotFound;
                     return NotFound(response);
@@ -42,7 +41,7 @@ namespace Oppa.Api.Controllers
                     return Ok(response);
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 response.StatusCode = HttpStatusCode.BadRequest;
                 response.ErrorMessages.Add(e.Message);
@@ -88,7 +87,6 @@ namespace Oppa.Api.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    // add validation errors to response.ErrorMessages
                     return BadRequest(response);
                 }
 

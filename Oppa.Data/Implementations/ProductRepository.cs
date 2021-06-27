@@ -5,8 +5,6 @@ using Oppa.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Oppa.Data.Implementations
 {
@@ -31,7 +29,6 @@ namespace Oppa.Data.Implementations
             }
             catch (Exception e)
             {
-                // log the error
                 tx.Rollback();
             }
         }
@@ -47,7 +44,6 @@ namespace Oppa.Data.Implementations
             }
             catch (Exception e)
             {
-                // log the error
                 tx.Rollback();
             }
         }
@@ -55,7 +51,7 @@ namespace Oppa.Data.Implementations
         public List<Product> GetAll()
         {
             return _context.Products
-                .Include(c=>c.Services)
+                .Include(c => c.Services)
                 .Select(g => new Product()
                 {
                     Id = g.Id,
@@ -89,7 +85,7 @@ namespace Oppa.Data.Implementations
                     TransactionMaxAmount = g.TransactionMaxAmount,
                     TransactionMinAmount = g.TransactionMinAmount
                 })
-                .FirstOrDefault(c=>c.Id==id);
+                .FirstOrDefault(c => c.Id == id);
         }
 
         public Product GetByProductType(ProductTypeEnum productType)
@@ -109,7 +105,6 @@ namespace Oppa.Data.Implementations
             }
             catch (Exception e)
             {
-                // log the error
                 tx.Rollback();
             }
 

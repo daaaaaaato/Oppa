@@ -5,8 +5,6 @@ using Oppa.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Oppa.Data.Implementations
 {
@@ -31,7 +29,6 @@ namespace Oppa.Data.Implementations
             }
             catch (Exception e)
             {
-                // log the error
                 tx.Rollback();
             }
         }
@@ -47,7 +44,6 @@ namespace Oppa.Data.Implementations
             }
             catch (Exception e)
             {
-                // log the error
                 tx.Rollback();
             }
         }
@@ -69,7 +65,7 @@ namespace Oppa.Data.Implementations
                 ModifiedAtUtc = g.ModifiedAtUtc,
                 ProductId = g.ProductId
             }).ToList();
-                
+
         }
 
         public Service GetById(int id)
@@ -99,7 +95,6 @@ namespace Oppa.Data.Implementations
             }
             catch (Exception e)
             {
-                // log the error
                 tx.Rollback();
             }
         }

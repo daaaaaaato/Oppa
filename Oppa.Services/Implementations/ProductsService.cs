@@ -2,11 +2,7 @@
 using Oppa.Data.Models;
 using Oppa.Data.ViewModels;
 using Oppa.Services.Abstractions;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Oppa.Services.Implementations
 {
@@ -20,8 +16,6 @@ namespace Oppa.Services.Implementations
 
         public void Create(CreateProductViewModel model)
         {
-            // here should be custom model validations
-
             var entity = new Product()
             {
                 CommisionPercentage = model.CommisionPercentage,

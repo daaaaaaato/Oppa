@@ -3,13 +3,8 @@ using Oppa.Data.Enums;
 using Oppa.Data.Models;
 using Oppa.Data.ViewModels;
 using Oppa.Services.Abstractions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using Oppa.Services.Helpers;
+using System.Collections.Generic;
 
 namespace Oppa.Services.Implementations
 {
@@ -54,7 +49,7 @@ namespace Oppa.Services.Implementations
                 else
                 {
                     var service = _serviceRepository.GetById(model.ServiceId.Value);
-                    if(service==null)
+                    if (service == null)
                         response.Errors.Add("Service is required");
                 }
             }
@@ -70,7 +65,7 @@ namespace Oppa.Services.Implementations
                 model.Iban.ValidateIban(ref response);
             }
 
-            if (response.IsSuccess) // has 0 validation errors
+            if (response.IsSuccess)
             {
                 var entity = new Transaction()
                 {
