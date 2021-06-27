@@ -22,6 +22,8 @@ namespace Oppa.Api
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -43,9 +45,6 @@ namespace Oppa.Api
             services.AddScoped<IProductsService, ProductsService>();
             services.AddScoped<IServicesService, ServicesService>();
 
-
-
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -64,6 +63,13 @@ namespace Oppa.Api
             }
 
             app.UseHttpsRedirection();
+
+
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true)
+                .AllowCredentials());
 
             app.UseRouting();
 

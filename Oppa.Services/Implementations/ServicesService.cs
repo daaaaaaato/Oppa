@@ -1,4 +1,5 @@
 ﻿using Oppa.Data.Abstractions;
+using Oppa.Data.Enums;
 using Oppa.Data.Models;
 using Oppa.Data.ViewModels;
 using Oppa.Services.Abstractions;
@@ -35,9 +36,9 @@ namespace Oppa.Services.Implementations
 
         }
 
-        public List<Service> GetAll()
+        public List<Service> GetAll(ProductTypeEnum? productType)
         {
-            return _serviceRepository.GetAll();
+            return _serviceRepository.GetAll(productType);
 
         }
 

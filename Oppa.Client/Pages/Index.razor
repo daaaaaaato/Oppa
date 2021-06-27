@@ -1,7 +1,47 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
+<h1>Oppa Test Project</h1>
 
-Welcome to your new app.
+<div class="container">
+    <div class="row">
+        <div class="card" style="width: 18rem; margin-right:100px; ">
+            <img class="card-img-top" src="myimg.svg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title" style="text-align:center;">მობილურის შევსება</h5>
+                <NavLink class="btn btn-primary btn-block" href="Mobile">
+                    გადახდა
+                </NavLink>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="myimg.svg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title" style="text-align:center;">საბანკო ანგარიშის შევსება</h5>
+                <NavLink class="btn btn-primary btn-block" href="Financial">
+                    გადახდა
+                </NavLink>
+            </div>
+        </div>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+    </div>
+    <div class="row" style="margin-top:50px;">
+        <div class="card" style="width: 18rem; margin-right: 100px !important;">
+            <img class="card-img-top" src="myimg.svg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title" style="text-align:center;">ქველმოქმედება</h5>
+                <NavLink class="btn btn-primary btn-block" href="Charity">
+                    გადახდა
+                </NavLink>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="myimg.svg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title" style="text-align:center;">კომუნალური</h5>
+                <NavLink class="btn btn-primary btn-block" href="Utility">
+                    გადახდა
+                </NavLink>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Oppa.Data.Abstractions;
+using Oppa.Data.Enums;
 using Oppa.Data.Models;
 using System;
 using System.Collections.Generic;
@@ -51,19 +52,24 @@ namespace Oppa.Data.Implementations
             }
         }
 
-        public List<Service> GetAll()
+        public List<Service> GetAll(ProductTypeEnum? productType)
         {
-            return _context.Services
+            var data = _context.Services
                 .Include(c => c.Product)
-                .Select(g => new Service()
-                {
-                    Name = g.Name,
-                    CreatedAtUtc = g.CreatedAtUtc,
-                    Id = g.Id,
-                    ModifiedAtUtc = g.ModifiedAtUtc,
-                    ProductId = g.ProductId
-                })
-                .ToList();
+                .AsQueryable();
+
+            if (productType.HasValue)
+                data = data.Where(c => c.Product.ProductType == productType.Value);
+
+            return data.Select(g => new Service()
+            {
+                Name = g.Name,
+                CreatedAtUtc = g.CreatedAtUtc,
+                Id = g.Id,
+                ModifiedAtUtc = g.ModifiedAtUtc,
+                ProductId = g.ProductId
+            }).ToList();
+                
         }
 
         public Service GetById(int id)

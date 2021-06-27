@@ -1,0 +1,62 @@
+﻿@page "/utility"
+@inject HttpClient Http
+
+<h1>კომუნალურების გადახდა</h1>
+
+@if (services != null)
+{
+    <EditForm Model="@model" OnValidSubmit="@HandleSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <select class="form-control selectpicker" @bind="@model.ServiceId">
+            <option>აირჩიეთ სერვისი</option>
+            @foreach (var item in services)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+        <div class="form-group">
+            <label for="exampleInputEmail1">პირადი ნომერი</label>
+            <InputText id="privateId" @bind-Value="model.PrivateId" class="form-control" placeholder="პირადი ნომერი" />
+            <small id="phoneHelp" class="form-text text-muted">ფორმატი : 01011096879</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">მობილურის ნომერი</label>
+            <InputText id="phoneNumber" @bind-Value="model.PhoneNumber" class="form-control" placeholder="მობილურის ნომერი" />
+            <small id="phoneHelp" class="form-text text-muted">ფორმატი : 555123456</small>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">თანხა</label>
+            <InputNumber id="amount" @bind-Value="model.TransactionAmount" class="form-control" placeholder="თანხა" />
+            <small id="amountHelp" class="form-text text-muted">1-100 შუალედში</small>
+        </div>
+
+        <button type="submit" class="btn-primary">გადახდა</button>
+    </EditForm>
+}
+
+else
+{
+    <p><em>Loading...</em></p>
+}
+
+@code {
+    private CreateTransactionViewModel model = new();
+    private ResponseModel result;
+    private List<Service> services;
+
+    protected override async Task OnInitializedAsync()
+    {
+        services = (await Http.GetFromJsonAsync<ResponseModel<List<Service>>>("https://localhost:44332/services?productType=5")).Data;
+    }
+
+    private async void HandleSubmit()
+    {
+        model.ProductType = ProductTypeEnum.UtilityBill;
+
+        var response = await Http.PostAsJsonAsync<CreateTransactionViewModel>("https://localhost:44332/transactions", model);
+
+        var content = await response.Content.ReadFromJsonAsync<ResponseModel>();
+    }
+}

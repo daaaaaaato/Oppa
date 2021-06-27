@@ -1,0 +1,51 @@
+﻿@page "/financial"
+@inject HttpClient Http
+
+<h1>საბანკო ანგარიშის შევსება</h1>
+
+
+
+<EditForm Model="@model" OnValidSubmit="@HandleSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">პირადი ნომერი</label>
+        <InputText id="privateId" @bind-Value="model.PrivateId" class="form-control" placeholder="პირადი ნომერი" />
+        <small id="phoneHelp" class="form-text text-muted">ფორმატი : 01011096879</small>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">ანგარიშის ნომერი</label>
+        <InputText id="phoneNumber" @bind-Value="model.Iban" class="form-control" placeholder="ანგარიშის ნომერი" />
+        <small id="phoneHelp" class="form-text text-muted">ფორმატი : GE00XX0000000000000000</small>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">მობილურის ნომერი</label>
+        <InputText id="phoneNumber" @bind-Value="model.PhoneNumber" class="form-control" placeholder="მობილურის ნომერი" />
+        <small id="phoneHelp" class="form-text text-muted">ფორმატი : 555123456</small>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">თანხა</label>
+        <InputNumber id="amount" @bind-Value="model.TransactionAmount" class="form-control" placeholder="თანხა" />
+        <small id="amountHelp" class="form-text text-muted">1-100 შუალედში</small>
+    </div>
+
+    <button type="submit" class="btn-primary">გადახდა</button>
+</EditForm>
+
+@code {
+    private CreateTransactionViewModel model = new();
+    private ResponseModel result;
+
+    private async void HandleSubmit()
+    {
+        model.ProductType = ProductTypeEnum.Financial;
+
+        var response = await Http.PostAsJsonAsync<CreateTransactionViewModel>("https://localhost:44332/transactions", model);
+
+        var content = await response.Content.ReadFromJsonAsync<ResponseModel>();
+    }
+}

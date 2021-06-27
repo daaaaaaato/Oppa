@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Oppa.Data.Enums;
 using Oppa.Data.Models;
 using Oppa.Data.ViewModels;
 using Oppa.Services.Abstractions;
@@ -87,13 +88,13 @@ namespace Oppa.Api.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAll([FromQuery] ProductTypeEnum? productType)
         {
             var response = new ResponseModel<List<Service>>();
 
             try
             {
-                var data = _servicesService.GetAll();
+                var data = _servicesService.GetAll(productType);
 
                 if (data == null || !data.Any())
                 {

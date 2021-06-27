@@ -1,0 +1,40 @@
+﻿@page "/mobile"
+@inject HttpClient Http
+
+<h1>მობილური ბალანსის შევსება</h1>
+
+
+
+<EditForm Model="@model" OnValidSubmit="@HandleSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">მობილურის ნომერი</label>
+        <InputText id="phoneNumber" @bind-Value="model.PhoneNumber" class="form-control" placeholder="მობილურის ნომერი" />
+        <small id="phoneHelp" class="form-text text-muted">ფორმატი : 555123456</small>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">თანხა</label>
+        <InputNumber id="amount" @bind-Value="model.TransactionAmount" class="form-control" placeholder="თანხა"  />
+        <small id="amountHelp" class="form-text text-muted">1-100 შუალედში</small>
+    </div>
+
+
+    <button type="submit" class="btn-primary">გადახდა</button>
+</EditForm>
+
+@code {
+    private CreateTransactionViewModel model = new();
+    private ResponseModel result;
+
+    private async void HandleSubmit()
+    {
+        model.ProductType = ProductTypeEnum.MobilePhone;
+
+        var response = await Http.PostAsJsonAsync<CreateTransactionViewModel>("https://localhost:44332/transactions", model);
+
+        var content = await response.Content.ReadFromJsonAsync<ResponseModel>();
+    }
+}

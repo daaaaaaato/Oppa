@@ -1,4 +1,5 @@
-﻿using Oppa.Data.Models;
+﻿using Oppa.Data.Enums;
+using Oppa.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Oppa.Data.Abstractions
 {
     public interface IServiceRepository
     {
-        List<Service> GetAll();
+        List<Service> GetAll(ProductTypeEnum? productType);
         Service GetById(int id);
         void Delete(Service entity);
         void Create(Service entity);
